@@ -48,7 +48,7 @@ def project_list_get(projects):
     for project in projects:
         if project.enf_consistancy() == True:
             object_type = ContentType.objects.get_for_model(project)
-            thumbnail = project.thumbnail.get_thumb(128,128)
+            thumbnail = project.thumbnail.get_thumb(300,200)
             listdata += [[project, thumbnail[0]]]
 
     return listdata
@@ -126,7 +126,7 @@ def project(request, pk):
                                 commentRootId=commentRoot.id,
                                 nodes=nodes,
 				commentform=commentform,
-
+                                moreobjects=norenders,
                                 images=images, 
 				texts=texts,
 				galleryname="base", 
@@ -242,7 +242,8 @@ def editOrCreateStuff(project, request, creating):
          # 
             list_to_tags(form.cleaned_data["tags"], project.tags)
             if creating:
-                list_to_tags(form2.cleaned_data["categories"], project.tags, False)
+                for i in form2.cleaned_data["categories"]:
+                    project.tags.add(i)
 
          # This may be redundant, but either way, this post is not a draft past this point.
             project.draft=False
@@ -344,10 +345,11 @@ def tagcloud(request):
     return render(request, "tagcloud.html")
 
 
-def list_to_tags(list, tags, clear=True):
+def list_to_tags(data, tags, clear=True):
+            data=data.split(',')
             if clear:
                 tags.clear()
-            for tag in list:
+            for tag in data:
                 tags.add(tag)
 
 

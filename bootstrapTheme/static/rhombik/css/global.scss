@@ -1,75 +1,61 @@
 @import 'settings';
-@import url('globalDeclarations.css');
-@import url('UI.css');
-@import url('header.css');
-@import url('body.css');
-@import url('profile.css');
-@import url('footer.css');
-@import url('mediaQueries.css');
 
-/* Original chris colour codes and the settings.scss equivelents
+@import 'navbar-icon';
 
- rgb(242, 242, 242) == $backround-color
- rgb(58, 48, 62); == $primary-color
+body {background-color:$backround-color;}
 
- */
-
-body {
-	font-family: 'source sans pro', arial, verdana, sans-serif;
-	background-color: $backround-color;
-	width: 100%;
+#TextsMain{
+    background-color:$foreground-color;
+    position: relative;
+    top: -10px;
+    padding: 25px;
+}
+.fullwidth{
+    display: block; 
+    width: 100%;
 }
 
-a:link, a:visited, a:active {
-	color: rgb(173, 112, 211);
-	text-decoration: none;
+.printableImageContainer{
+padding: 15px;
 }
 
-a:hover, a:focus {
-	color: $primary-color;
-	outline-color: rgb(173, 112, 211);
+iframe {
+border: none;
 }
 
-i {
-	position: relative;
-	top: 1px;
+.searchTagBox{
 }
 
-.small {
-	font-size: 10pt;
+//upvotes and downvotes
+.upvote.active{
+color: red;
 }
+.downvote.active{
+color: blue;
+}
+
+
+//From chrises css
 
 hr {
-	margin: 12px 0;
-	border: none;
-	border-top: 1px solid rgb(180,180,180);
+    margin: 12px 0px;
+    border-right: medium none;
+    border-width: 1px medium medium;
+    border-style: solid none none;
+    border-color: #B4B4B4 -moz-use-text-color -moz-use-text-color;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image: none;
 }
 
-h1.title {
-	display: inline-block;
-	margin-bottom: 10px;
-}
-
-#outerWrap {
-	width: 100%;
-	overflow-x: hidden;
-}
-
-	#innerWrap {
-		float: right;
-		width: 100%;
-	}
-	
-@media screen
-and (min-width: 768px)
-{
-
-	.left {
-		float: left;
-	}
-
-	.right {
-		float: right;
-	}
-
+.printableThumbs span {
+    display: block;
+    float: left;
+    margin: 0px 10px 20px 0px;
+    padding: 5px;
+    border: 1px solid #C8C8C8;
+    border-radius: 3px;
+    background-color: #FFF;
 }
